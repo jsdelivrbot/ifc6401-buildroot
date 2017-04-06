@@ -1,0 +1,4 @@
+config BR2_PACKAGE_DSI85
+	bool "dsi85"
+	help
+		the dsi85 kernel module
