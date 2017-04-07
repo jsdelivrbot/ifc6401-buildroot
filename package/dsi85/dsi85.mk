@@ -6,7 +6,10 @@
 
 
 DSI85_VERSION = 241f587f
-DSI85_SITE    = $(call github,madmo,dsi85,$(DSI85_VERSION))
+# KA: use local dsi85 checkout for development
+#DSI85_SITE    = $(call github,madmo,dsi85,$(DSI85_VERSION))
+DSI85_SITE = $(TOPDIR)/../dsi85
+DSI85_SITE_METHOD = local
 
 DSI85_DEPENDENCIES = linux
 
