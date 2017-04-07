@@ -7,7 +7,6 @@
 
 DSI85_VERSION = 241f587f
 DSI85_SITE    = $(call github,madmo,dsi85,$(DSI85_VERSION))
-DSI85_SITE_METHOD = git
 
 DSI85_DEPENDENCIES = linux
 
