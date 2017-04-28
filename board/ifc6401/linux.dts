@@ -400,28 +400,6 @@
 			avdd-supply = <&pm8921_l11>;
 			vcss-supply = <&ext_3p3v>;
 
-			panel@0 {
-				reg = <0>;
-				compatible = "nlt,192108AC18";
-
-				backlight = <&backlight>;
-
-				vddp-supply = <&pm8921_l17>;
-				iovcc-supply = <&pm8921_lvs7>;
-
-				enable-gpios = <&tlmm_pinmux 80 GPIO_ACTIVE_HIGH>;
-				reset-gpios = <&tlmm_pinmux 32 GPIO_ACTIVE_HIGH>;
-
-				pinctrl-names	= "default";
-				pinctrl-0	= <&display_pins>;
-
-				//port {
-                                //     	panel_in: endpoint {
-				//		remote-endpoint = <&dsi0_out>;
-				//	};
-				//};
-			};
-
 			ports {
 				port@0 {
                                         reg = <0> ;
@@ -433,7 +411,7 @@
 				port@1 {
                                         reg = <1> ;
 					dsi0_out: endpoint {
-						remote-endpoint = <&dsi85_bridge_in>;
+						remote-endpoint = <&dsi85_in>;
 						data-lanes = <0 1 2 3>;
 					};
 				};
@@ -443,6 +421,28 @@
 		dsi-phy@4700200 {
 			status = "okay";
 			vddio-supply = <&pm8921_lvs7>;/*VDD_PLL2_1 to 7*/
+		};
+
+		dsi_lvds_panel: panel {
+			reg = <0>;
+			compatible = "nlt,192108AC18";
+
+			backlight = <&backlight>;
+
+			vddp-supply = <&pm8921_l17>;
+			iovcc-supply = <&pm8921_lvs7>;
+
+			enable-gpios = <&tlmm_pinmux 80 GPIO_ACTIVE_HIGH>;
+			reset-gpios = <&tlmm_pinmux 32 GPIO_ACTIVE_HIGH>;
+
+			pinctrl-names	= "default";
+			pinctrl-0	= <&display_pins>;
+
+			port {
+                		panel_in: endpoint {
+					remote-endpoint = <&dsi85_out>;
+				};
+			};
 		};
 
 		hdmi-out {
@@ -501,10 +501,23 @@
 				dsi85@2d {
 					compatible = "ti,dsi85";
 					reg = <0x2d>;
-                                        port {
-                                        	dsi85_bridge_in: endpoint {
-                                                	remote-endpoint = <&dsi0_out>;
-                                                };
+                                        ports {
+						#address-cells = <1>;
+					      	#size-cells = <0>;
+
+						port@0 {
+							reg = <0>;
+							dsi85_in: endpoint {
+						     		 remote-endpoint = <&dsi0_out>;
+							};		 		     
+						};			     
+
+						port@1 {
+							reg = <1>;
+							dsi85_out: endpoint {
+								  remote-endpoint = <&panel_in>;
+							};
+						};
                                         };
 				};
 
