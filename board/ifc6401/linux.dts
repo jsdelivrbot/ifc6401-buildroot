@@ -504,7 +504,6 @@
 
 					dsi-lanes = <4>;
 					lvds-channels = <2>;
-					dsi-clock-divider = <11>;
 					sync-delay = <33>;
 					
                                         ports {
