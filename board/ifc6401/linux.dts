@@ -501,6 +501,12 @@
 				dsi85@2d {
 					compatible = "ti,dsi85";
 					reg = <0x2d>;
+
+					dsi-lanes = <4>;
+					lvds-channels = <2>;
+					dsi-clock-divider = <11>;
+					sync-delay = <33>;
+					
                                         ports {
 						#address-cells = <1>;
 					      	#size-cells = <0>;
