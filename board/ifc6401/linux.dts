@@ -506,6 +506,17 @@
 					lvds-channels = <2>;
 					sync-delay = <33>;
 					
+					de-neg-polarity = <0>; // default
+					force-24bpp-mode = <1>;
+					lvds-vocm = <0> ; // default
+					lvds-vod-swing-cha = <1>;
+					lvds-vod-swing-chb = <1>;
+					lvds-even-odd-swap = <0>; // default
+					lvds-reverse = <0>; //default
+					lvds-term = <3>; //yes, terminate
+					lvds-cm-adjust-cha = <0>; // default
+					lvds-cm-adjust-chb = <0>; // default
+					
                                         ports {
 						#address-cells = <1>;
 					      	#size-cells = <0>;
