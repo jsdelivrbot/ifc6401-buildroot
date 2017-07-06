@@ -128,4 +128,12 @@ config BR2_LINUX_KERNEL_EXT_AUFS_VERSION
 
 endif # aufs
 
+#-------------------------------------------------------------------------------
+# dsi85
+config BR2_LINUX_KERNEL_EXT_DSI85
+	bool "DSI85 DRM bridge drivers"
+	select BR2_PACKAGE_DSI85
+	help
+	  DRM Bridge driver for TI SN65DSI85 DSI-to-LVDS converters.
+
 endmenu
